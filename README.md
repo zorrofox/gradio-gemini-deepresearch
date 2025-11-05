@@ -99,6 +99,32 @@ python app.py
 
 The application will be available at `http://127.0.0.1:7888`.
 
+## Running the Discovery Engine Search Example
+
+This project includes a standalone script, `discovery_engine_search_example.py`, to directly test the search functionality of the Google Cloud Discovery Engine.
+
+### Configuration
+
+The script loads its configuration from the `.env` file. Before running, ensure your `.env` file contains the following variables:
+
+```
+PROJECT_ID=your-gcp-project-id
+LOCATION=your-engine-location
+DATA_STORE_ID=your-data-store-id
+```
+
+### Running the Script
+
+Once the `.env` file is configured, you can execute the script directly:
+
+```bash
+python discovery_engine_search_example.py
+```
+
+### Permissions
+
+The script uses your Application Default Credentials (ADC). If you encounter a `403 Permission Denied` error, it means the authenticated user or service account lacks the necessary IAM permissions. To fix this, grant the **"Discovery Engine Viewer"** role to your principal in the Google Cloud Console.
+
 ## Running Tests
 
 To ensure all components are working correctly, you can run the suite of unit tests:

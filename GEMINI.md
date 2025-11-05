@@ -42,3 +42,20 @@ Create a multi-step Gradio web application that uses the Google Discovery Engine
 *   **Isolate and Test**: When faced with complex UI interaction bugs, create minimal, targeted test cases for each function (`prepare_for_final_report`, `generate_final_report`, `finalize_session`, `enable_start_over`). This was critical to untangling the complex state changes and identifying the exact point of failure.
 
 *   **Trust, but Verify (with `read_file`)**: In a long session with many modifications, assumptions about the current state of a file can be wrong. When a `replace` or `write` operation fails unexpectedly, use `read_file` to get the ground truth before attempting another modification.
+
+## Standalone Search Test Script
+
+To facilitate direct testing of the Discovery Engine's search capabilities, a standalone script `discovery_engine_search_example.py` was created.
+
+### Purpose
+
+This script allows for a quick, command-line based test of a specific Data Store within the Discovery Engine. It bypasses the Gradio UI for simple, direct verification of search functionality and IAM permissions.
+
+### Configuration and Usage
+
+1.  **Environment Variables**: The script requires `PROJECT_ID`, `LOCATION`, and `DATA_STORE_ID` to be set in the `.env` file.
+2.  **Execution**: Run the script from the command line:
+    ```bash
+    python discovery_engine_search_example.py
+    ```
+3.  **Permissions**: The script uses Application Default Credentials. If a `403 Permission Denied` error occurs, the principal (user or service account) needs the **"Discovery Engine Viewer"** IAM role for the specified project.
