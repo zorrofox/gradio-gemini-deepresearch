@@ -2,3 +2,4 @@ gradio
 python-dotenv
 requests
 ijson
+google-cloud-discoveryengine
